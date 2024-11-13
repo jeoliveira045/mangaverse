@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable;
 data class MangaInformation(
         val id: String,
         val title: String,
-        val subTitle: String,
+        val sub_title: String,
         val status: String,
         val thumb: String,
         val summary: String,
@@ -14,7 +14,7 @@ data class MangaInformation(
         val genres: List<String>,
         val nsfw: Boolean,
         val type: String,
-        val totalChapter: Int,
-        val createdAt: Long,
-        val updatedAt: Long
+        val total_chapter: Int,
+        val create_at: Long,
+        val update_at: Long
 )

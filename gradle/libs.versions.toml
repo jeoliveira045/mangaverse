@@ -1,4 +1,5 @@
 [versions]
+accompanistGlide = "0.28.0"
 agp = "8.3.0"
 atomicfuGradlePlugin = "0.17.3"
 kotlin = "1.9.0"
@@ -14,6 +15,7 @@ io-ktor-version = "2.2.0"
 kotlinxCoroutinedCore="1.9.0"
 
 [libraries]
+accompanist-glide = { module = "com.google.accompanist:accompanist-glide", version.ref = "accompanistGlide" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 atomicfu-gradle-plugin = { module = "org.jetbrains.kotlinx:atomicfu-gradle-plugin", version.ref = "atomicfuGradlePlugin" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }

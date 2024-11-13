@@ -75,6 +75,8 @@ dependencies {
     implementation(libs.ktor.core)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.navigation)
+    implementation("io.coil-kt:coil-compose:2.1.0")
+//    implementation("com.google.accompanist:accompanist-glide:0.28.0")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
