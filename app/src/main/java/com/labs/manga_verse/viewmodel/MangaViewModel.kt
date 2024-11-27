@@ -1,33 +1,32 @@
 package com.labs.manga_verse.viewmodel
 
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.labs.manga_verse.model.MangaState
-//import com.labs.manga_verse.model.MangaUseCase
-//import com.labs.manga_verse.service.MangaApiService
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
+import com.labs.manga_verse.model.Series
+import com.labs.manga_verse.model.SeriesListRequest
+import com.labs.manga_verse.repository.SeriesRepository
+import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-//class MangaViewModel(): ViewModel() {
-//
-//    private val _data = MutableStateFlow<MangaState>(MangaState())
-//    val data: StateFlow<MangaState> get() = _data
-//
-//    val useCase: MangaUseCase
-//
-//    init{
-//        var service = MangaApiService()
-//
-//        useCase = MangaUseCase(service)
-//
-//        getDataFromApi()
-//    }
-//    private fun getDataFromApi(){
-//        viewModelScope.launch {
-//            val mangas = useCase.getManga()
-//
-//            _data.emit(MangaState(mangaList = mangas))
-//        }
-//    }
-//}
+//import com.labs.manga_verse.model.MangaUseCase
+//import com.labs.manga_verse.service.MangaApiService
+
+class MangaViewModel(private val repository: SeriesRepository = SeriesRepository()): ViewModel() {
+    val coroutineExceptionHandler = CoroutineExceptionHandler{_, throwable ->
+        throwable.printStackTrace()
+    }
+    init {
+        viewModelScope.launch(Dispatchers.IO + coroutineExceptionHandler){
+            seriesState.value = getAllSeries()
+        }
+    }
+
+    var seriesState: MutableState<List<Series>> = mutableStateOf(emptyList<Series>())
+    suspend fun getAllSeries(): List<Series>{
+        return repository.getAllSeries().data
+    }
+
+}

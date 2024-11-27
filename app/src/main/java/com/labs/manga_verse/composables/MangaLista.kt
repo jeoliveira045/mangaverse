@@ -2,13 +2,10 @@ package com.labs.manga_verse.composables
 
 import android.content.Context
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import com.labs.manga_verse.model.MangaInformation
+import com.labs.manga_verse.model.Series
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 
@@ -26,7 +23,7 @@ fun MangaLista(
 
 
 
-fun loadJsonFromAssets(context: Context, fileName: String): List<MangaInformation> {
+fun loadJsonFromAssets(context: Context, fileName: String): List<Series> {
     val jsonString = context.assets.open(fileName).bufferedReader().use { it.readText() }
     return Json.decodeFromString(jsonString)
 }

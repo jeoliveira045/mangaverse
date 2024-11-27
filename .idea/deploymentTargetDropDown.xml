@@ -2,10 +2,16 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
+      <entry key="MangaChapterItemPreview">
+        <State />
+      </entry>
       <entry key="MangaDetalhePreview">
         <State />
       </entry>
       <entry key="MangaItemPreview">
+        <State />
+      </entry>
+      <entry key="MangaItemPreview (1)">
         <State />
       </entry>
       <entry key="app">
